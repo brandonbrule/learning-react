@@ -4,6 +4,7 @@ import './App.css';
 
 import Posts from './components/Posts';
 import PostForm from './components/Postform';
+import UserTable from './components/Table';
 
 class App extends Component {
   render() {
@@ -12,6 +13,8 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
+        <UserTable />
+        <hr/>
         <PostForm />
         <hr/>
         <Posts />
