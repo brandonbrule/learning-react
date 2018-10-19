@@ -16,9 +16,9 @@ class UserTable extends Component {
   }
   render() {
     const userList = this.state.posts.map(post => (
-      <div key={post.id}>
-        <p><strong>{post.name}</strong> : {post.email}</p>
-      </div>
+      <ul key={post.id}>
+        <li><strong>{post.name}</strong> : {post.email}</li>
+      </ul>
       ));
     return (
       <div>
