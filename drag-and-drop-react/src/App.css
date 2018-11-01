@@ -1,0 +1,66 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+header{
+  text-align: center;
+  font-size: 2em;
+  padding: 1%;
+}
+
+.nav{
+  position: absolute;
+  width: 15%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: black;
+}
+
+
+.nav ul{
+  margin: 0;
+  padding: 5px;
+}
+.nav ul li {
+  border:2px solid black;
+  margin: 5px 0;
+  padding: 10px 0;
+  background:#fff;
+  text-align: center;
+  list-style:none;
+  cusor:pointer;
+}
+.nav ul li:hover{
+  cusor:pointer;
+}
+
+
+
+.site-container{
+  width: 85%;
+  float: right;
+}
+.region1{
+  width: 50%;
+  height: 100vh;
+  background: rgba(0,255,0,0.5);
+  float:left;
+}
+
+.region2{
+  width:50%;
+  height: 100vh;
+  float: right;
+  background: yellow;
+}
+
+.app-container{
+  width: 70%;
+  margin: 5% auto;
+  background:#fff;
+  padding: 5%;
+}
