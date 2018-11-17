@@ -8,7 +8,12 @@ if(!localStorage.getItem(Config.app.name)){
 
 export default {
     exists(key){
-      return localStorage.getItem(key);
+      const obj = JSON.parse(localStorage.getItem( Config.app.name));
+      if(obj[key]){
+        return true;
+      } else{
+        return false;
+      }
     },
 
     set(key, value) {
@@ -19,7 +24,7 @@ export default {
     },
 
     get(key) {
-      console.log('get: ' + key);
+      //console.log('get: ' + key);
       const obj =  JSON.parse(localStorage.getItem( Config.app.name ) );
       return obj[key];
     },

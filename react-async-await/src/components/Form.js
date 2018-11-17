@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import LS from '../utilities/LocalStorageManager.js';
+import {AuthContext} from '../contexts/AuthProvider.js';
 
-class Form extends React.Component {
+class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    this.changePermission = this.changePermission.bind(this);
+  componentDidMount(){
+    const obj = LS.get('MyForm');
+    this.setState({value: obj});
   }
 
   handleChange(event) {
@@ -18,34 +22,30 @@ class Form extends React.Component {
 
   handleSubmit(event) {
     LS.set('MyForm', this.state.value);
-    this.props.updateAppState('MyForm', this.state.value);
     event.preventDefault();
   }
 
-  changePermission(event){
-    this.props.updateAppState('loggedin', event.target.value);
-  }
-
-  componentDidMount(){
-    const obj = LS.get('MyForm');
-    this.setState({value: obj});
-    this.props.updateAppState('MyForm', obj);
-    console.log(obj);
-  }
+  handleDynamicChange = (value, context) => e => {
+    LS.set('MyForm', this.state.value);
+    context.updatedynamicvalue(value);
+    e.preventDefault();
+  };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <AuthContext.Consumer>
+        {(context) => (
+          <React.Fragment>
+            <button onClick={context.logout}>Logout</button>
+            <button onClick={context.login}>Login</button>
+            <form onSubmit={ this.handleDynamicChange(this.state.value, context)}>
+                Name: <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <input type="submit" value="Submit" />
+            </form>
+          </React.Fragment>
+        )}
+      </AuthContext.Consumer>
 
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-
-        <button onClick={this.changePermission} value="true">Enable Permissions</button>
-        <button onClick={this.changePermission} value="false">Disable Permissions</button>
-      </form>
     );
   }
 }
