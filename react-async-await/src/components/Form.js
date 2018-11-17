@@ -23,7 +23,7 @@ class Form extends React.Component {
   }
 
   changePermission(event){
-    this.props.updateAppState('permissions', event.target.value);
+    this.props.updateAppState('loggedin', event.target.value);
   }
 
   componentDidMount(){

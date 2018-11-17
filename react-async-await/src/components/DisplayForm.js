@@ -8,7 +8,7 @@ class DisplayForm extends React.Component {
   }
 
   showName(){
-    if(this.props.AppState.permissions === "true"){
+    if(this.props.AppState.loggedin === "true"){
       return <h1>{this.props.AppState.MyForm}</h1>
     }
   };
