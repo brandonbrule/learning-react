@@ -10,12 +10,8 @@ class DisplayUser extends Component {
     if(context.state.loggedin && context.state.user){
       return(
         <React.Fragment>
-          <p>{context.state.user.name} : {context.state.user.email}</p>
-
-          <span>Age: {context.state.age}</span>
-          <button onClick={context.growAYearOlder}>+1</button>
-          <h3>Message: </h3>
-          <div>{context.state.dynamicvalue}</div>
+          <h2>components/DisplayUser.JS</h2>
+          <h3>{context.state.user.name} : {context.state.user.email}</h3>
         </React.Fragment>
       )
     }
@@ -26,7 +22,6 @@ class DisplayUser extends Component {
       <AuthContext.Consumer>
         {(context) => (
           <React.Fragment>
-            <hr />
             {this.showDetails(context)}
           </React.Fragment>
         )}
