@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import LS from '../utilities/LocalStorageManager.js';
 import LoginForm from '../components/LoginForm.js';
+import FetchManager from '../utilities/FetchManager.js';
 
 export const AuthContext = React.createContext();
 export default class AuthProvider extends Component {
   constructor(props) {
     super(props)
-    this.requestUser = this.requestUser.bind(this)
+    this.requestUser = this.requestUser.bind(this);
+    this.testFunc = this.testFunc.bind(this)
   };
 
   state = {
@@ -20,8 +22,17 @@ export default class AuthProvider extends Component {
     }
   };
 
+
+  testFunc(){
+    this.setState({testfunc:"testfun"})
+    alert('testfunc');
+  }
+
   // Request User Data Info from jsonplaceholder (This will be login request)
   requestUser(){
+
+    FetchManager.get(this.testFunc);
+
     let rand = Math.floor(Math.random() * 10) + 1;
     fetch('https://jsonplaceholder.typicode.com/users/' + rand)
     .then(response => response.json())
