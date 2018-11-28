@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-class ExampleApp1 extends Component {
+class DynamicComponent1 extends Component {
   render() {
     return (
-      <div className="app-container">
+      <React.Fragment>
         <nav>
           <ul>
             <li>
@@ -36,9 +36,9 @@ class ExampleApp1 extends Component {
             </li>
           </ul>
         </nav>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
-export default ExampleApp1;
+export default DynamicComponent1;
